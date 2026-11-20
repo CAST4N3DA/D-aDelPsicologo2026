@@ -1,3 +1,8 @@
+
+/* =================================
+   CONFIGURACIÓN GENERAL
+================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,61 +10,232 @@
 }
 
 body {
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    background:
+        radial-gradient(circle at 15% 20%, #D9C8B5 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #D5C5B4 0%, transparent 35%),
+        #F5EFE7;
+
+    color: #55483F;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    overflow: hidden;
-    position: relative;
+
+    padding: 25px;
+    overflow-x: hidden;
 }
+
+/* =================================
+   FONDO DECORATIVO
+================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(133, 111, 91, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    top: -120px;
+    left: -100px;
+}
+
+body::after {
+    bottom: -120px;
+    right: -100px;
+}
+
+/* =================================
+   CONTENEDOR PRINCIPAL
+================================= */
 
 .contenedor {
-    text-align: center;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 40px 60px;
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(142, 197, 252, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 750px;
+    position: relative;
+    z-index: 1;
 }
 
-.contenedor:hover {
-    transform: scale(1.02);
+/* =================================
+   PANTALLA DE BIENVENIDA
+================================= */
+
+.bienvenida {
+    text-align: center;
+    background: rgba(255, 252, 247, 0.82);
+    border: 1px solid rgba(155, 132, 109, 0.25);
+    border-radius: 25px;
+    padding: 65px 35px;
+
+    box-shadow: 0 15px 45px rgba(91, 73, 57, 0.10);
+
+    animation: aparecer 1.2s ease;
 }
+
+.decoracion-cerebro {
+    font-size: 65px;
+    margin-bottom: 25px;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.subtitulo {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #9A8068;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(36px, 7vw, 55px);
+    font-weight: normal;
+    color: #665345;
+    margin-bottom: 20px;
+}
+
+.descripcion {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #89796C;
+    margin-bottom: 35px;
+}
+
+/* =================================
+   BOTÓN PRINCIPAL
+================================= */
+
+button {
+    border: none;
+    background: #806B59;
+    color: #FFF9F2;
+
+    padding: 15px 30px;
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #5E4D40;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(91, 73, 57, 0.2);
+}
+
+/* =================================
+   SECCIÓN DEL MENSAJE
+================================= */
 
 .mensaje {
-    font-size: 3.5rem;
-    color: #4a5568;
-    font-weight: 800;
-    letter-spacing: 1px;
+    text-align: center;
+    background: rgba(255, 252, 247, 0.92);
+
+    border: 1px solid rgba(155, 132, 109, 0.25);
+    border-radius: 25px;
+
+    padding: 55px 40px;
+
+    box-shadow: 0 15px 45px rgba(91, 73, 57, 0.10);
+
+    animation: aparecer 1s ease;
 }
 
-.destaque {
-    background: linear-gradient(to right, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    background-clip: text; /* Añade esta línea estándar */
-    -webkit-text-fill-color: transparent;
+.mensaje h2 {
+    font-size: clamp(25px, 5vw, 34px);
+    font-weight: normal;
+    line-height: 1.4;
+    color: #705B49;
+    margin-bottom: 30px;
 }
 
-
-.estrella {
-    position: absolute;
-    color: #ffffff;
-    pointer-events: none;
-    animation: brillar 3s linear infinite;
+.mensaje p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #817164;
+    margin-bottom: 20px;
 }
 
-@keyframes brillar {
-    0%, 100% { 
-        opacity: 0; 
-        transform: scale(0.5); 
+.mensaje .dedicatoria {
+    color: #806B59;
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 19px;
+}
+
+/* =================================
+   ANIMACIONES
+================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    50% { 
-        opacity: 0.8; 
-        transform: scale(1.2); 
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =================================
+   RESPONSIVE - CELULARES
+================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .bienvenida {
+        padding: 50px 22px;
+    }
+
+    .mensaje {
+        padding: 40px 23px;
+    }
+
+    .mensaje p {
+        font-size: 15px;
+    }
+
+    .subtitulo {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+}
+
+/* Respetar preferencias de movimiento */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
+
