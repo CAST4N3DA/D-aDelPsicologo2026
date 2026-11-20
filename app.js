@@ -1,29 +1,27 @@
 
-// ======================================
-// INTERACCIÓN DE LA PÁGINA
-// ======================================
+document.addEventListener("DOMContentLoaded", function () {
 
-// Obtener los elementos HTML
-const botonComenzar = document.getElementById("botonComenzar");
-const inicio = document.getElementById("inicio");
-const mensaje = document.getElementById("mensaje");
+    const botonComenzar = document.getElementById("botonComenzar");
+    const inicio = document.getElementById("inicio");
+    const mensaje = document.getElementById("mensaje");
 
-// ======================================
-// MOSTRAR EL MENSAJE ESPECIAL
-// ======================================
+    // Verificar que los elementos existan
+    if (!botonComenzar || !inicio || !mensaje) {
+        console.error("No se encontraron los elementos de la página.");
+        return;
+    }
 
-botonComenzar.addEventListener("click", function () {
+    // Acción del botón
+    botonComenzar.addEventListener("click", function () {
 
-    // Ocultar la bienvenida
-    inicio.style.display = "none";
+        inicio.hidden = true;
+        mensaje.hidden = false;
 
-    // Mostrar la carta
-    mensaje.hidden = false;
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-    // Volver al inicio de la página
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
     });
 
 });
