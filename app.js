@@ -1,23 +1,29 @@
-function crearEstrella() {
-    const estrella = document.createElement('div');
-    estrella.classList.add('estrella');
-    estrella.innerText = '✦';
-    
-    // Posición aleatoria en la pantalla
-    estrella.style.left = Math.random() * 100 + 'vw';
-    estrella.style.top = Math.random() * 100 + 'vh';
-    
-    // Tamaño aleatorio
-    const tamano = Math.random() * 15 + 10;
-    estrella.style.fontSize = tamano + 'px';
-    
-    // Retraso aleatorio para el parpadeo
-    estrella.style.animationDelay = Math.random() * 2 + 's';
 
-    document.body.appendChild(estrella);
-}
+// ======================================
+// INTERACCIÓN DE LA PÁGINA
+// ======================================
 
-// Crear las 40 estrellas iniciales en la pantalla
-for (let i = 0; i < 40; i++) {
-    crearEstrella();
-}
+// Obtener los elementos HTML
+const botonComenzar = document.getElementById("botonComenzar");
+const inicio = document.getElementById("inicio");
+const mensaje = document.getElementById("mensaje");
+
+// ======================================
+// MOSTRAR EL MENSAJE ESPECIAL
+// ======================================
+
+botonComenzar.addEventListener("click", function () {
+
+    // Ocultar la bienvenida
+    inicio.style.display = "none";
+
+    // Mostrar la carta
+    mensaje.hidden = false;
+
+    // Volver al inicio de la página
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
